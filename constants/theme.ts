@@ -5,25 +5,36 @@
 
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
-
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    text: '#101010',
+    background: '#ededed',
+    tint: '#07c160',
+    icon: '#7a7a7a',
+    tabIconDefault: '#7a7a7a',
+    tabIconSelected: '#07c160',
+    tabBarBackground: '#f9f9f9',
+    card: '#ffffff',
+    separator: '#d9d9d9',
+    secondaryText: '#8a8a8a',
+    badgeBackground: '#fa5151',
+    badgeText: '#ffffff',
+    avatarPlaceholder: '#c8c8c8',
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    text: '#ececec',
+    background: '#111111',
+    tint: '#07c160',
+    icon: '#8d8d8d',
+    tabIconDefault: '#8d8d8d',
+    tabIconSelected: '#07c160',
+    tabBarBackground: '#1a1a1a',
+    card: '#1f1f1f',
+    separator: '#2e2e2e',
+    secondaryText: '#a0a0a0',
+    badgeBackground: '#e25a5a',
+    badgeText: '#ffffff',
+    avatarPlaceholder: '#4a4a4a',
   },
 };
 
