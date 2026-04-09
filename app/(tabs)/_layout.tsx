@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { IconSymbol } from '@/components/ui/icon-symbol';
+import { usePushNotifications } from '@/hooks/use-push-notifications';
 import { useThemeColor } from '@/hooks/use-theme-color';
 
 import ContactsScreen from './contacts';
@@ -25,6 +26,16 @@ export default function TabLayout() {
   const scrollRef = useRef<ScrollView>(null);
   const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
+
+  // 初始化推送权限，模拟一条歌唱来消流量通知
+  const { sendLocalNotification } = usePushNotifications();
+  // 应用进入 3s 后发一条测试本地通知
+  React.useEffect(() => {
+    const t = setTimeout(() => {
+      sendLocalNotification('张伟', '2222');
+    }, 3000);
+    return () => clearTimeout(t);
+  }, [sendLocalNotification]);
 
   const tabBarBg = useThemeColor({}, 'tabBarBackground');
   const separator = useThemeColor({}, 'separator');
