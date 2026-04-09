@@ -53,7 +53,7 @@ function MomentCard({
   const likeColor = useThemeColor({ light: '#576b95', dark: '#7a9fd4' }, 'text');
 
   const MAX_LINES = 4;
-  const isLong = item.content.length > 80;
+  const isLong = item.content.length > MAX_LINES * 20;
 
   return (
     <View style={styles.momentCard}>
@@ -88,7 +88,7 @@ function MomentCard({
           <View style={styles.momentActions}>
             <Pressable style={styles.actionBtn} onPress={() => onLike(item.id)}>
               <IconSymbol
-                name={item.likedByMe ? 'safari.fill' : 'safari.fill'}
+                name={item.likedByMe ? 'heart.fill' : 'heart'}
                 size={14}
                 color={item.likedByMe ? tint : secondaryText}
               />

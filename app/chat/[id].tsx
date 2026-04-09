@@ -34,6 +34,7 @@ export default function ChatDetailScreen() {
   const secondaryText = useThemeColor({}, 'secondaryText');
   const tint = useThemeColor({}, 'tint');
   const inputBackground = useThemeColor({ light: '#f0f0f0', dark: '#2a2a2a' }, 'background');
+  const inputTextColor = useThemeColor({}, 'text');
   const bubbleMineColor = '#95ec69';
   const bubbleOtherColor = cardColor;
 
@@ -144,7 +145,7 @@ export default function ChatDetailScreen() {
             },
           ]}>
           <TextInput
-            style={[styles.input, { backgroundColor: inputBackground, color: '#101010' }]}
+            style={[styles.input, { backgroundColor: inputBackground, color: inputTextColor }]}
             placeholder="发送消息..."
             placeholderTextColor={secondaryText}
             value={inputText}

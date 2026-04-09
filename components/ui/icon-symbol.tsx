@@ -36,6 +36,8 @@ const MAPPING = {
   'camera.viewfinder': 'center-focus-weak',
   'face.smiling': 'sentiment-satisfied-alt',
   'mic.fill': 'mic',
+  'heart.fill': 'favorite',
+  'heart': 'favorite-border',
 } as unknown as IconMapping;
 
 /**
