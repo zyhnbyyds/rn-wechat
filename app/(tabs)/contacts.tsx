@@ -1,4 +1,5 @@
 import { SectionList, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -11,14 +12,14 @@ const sections = Array.from(new Set(contacts.map((item) => item.tag))).map((tag)
 }));
 
 export default function ContactsScreen() {
+  const insets = useSafeAreaInsets();
   const separatorColor = useThemeColor({}, 'separator');
   const cardColor = useThemeColor({}, 'card');
   const secondaryText = useThemeColor({}, 'secondaryText');
-  const avatarPlaceholder = useThemeColor({}, 'avatarPlaceholder');
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title" style={styles.title}>
+      <ThemedText type="title" style={[styles.title, { paddingTop: insets.top + 8 }]}>
         通讯录
       </ThemedText>
       <SectionList
@@ -27,14 +28,20 @@ export default function ContactsScreen() {
         stickySectionHeadersEnabled
         renderSectionHeader={({ section }) => (
           <View style={[styles.sectionHeader, { backgroundColor: separatorColor }]}>
-            <ThemedText style={{ color: secondaryText }}>{section.title}</ThemedText>
+            <ThemedText style={[styles.sectionTitle, { color: secondaryText }]}>
+              {section.title}
+            </ThemedText>
           </View>
         )}
-        ItemSeparatorComponent={() => <View style={[styles.separator, { backgroundColor: separatorColor }]} />}
+        ItemSeparatorComponent={() => (
+          <View style={[styles.separator, { backgroundColor: separatorColor }]} />
+        )}
         renderItem={({ item }) => (
           <View style={[styles.row, { backgroundColor: cardColor }]}>
-            <View style={[styles.avatar, { backgroundColor: avatarPlaceholder }]} />
-            <ThemedText>{item.name}</ThemedText>
+            <View style={[styles.avatar, { backgroundColor: item.avatarColor }]}>
+              <ThemedText style={styles.avatarText}>{item.name.charAt(0)}</ThemedText>
+            </View>
+            <ThemedText style={styles.name}>{item.name}</ThemedText>
           </View>
         )}
       />
@@ -45,7 +52,6 @@ export default function ContactsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 56,
   },
   title: {
     paddingHorizontal: 16,
@@ -56,21 +62,35 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 16,
   },
+  sectionTitle: {
+    fontSize: 13,
+    fontWeight: '500',
+  },
   row: {
-    height: 52,
+    height: 56,
     paddingHorizontal: 16,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
   },
   avatar: {
-    width: 34,
-    height: 34,
-    borderRadius: 6,
-    backgroundColor: '#b8b8b8',
+    width: 38,
+    height: 38,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  avatarText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#fff',
+  },
+  name: {
+    fontSize: 16,
   },
   separator: {
     height: 0.5,
-    marginLeft: 62,
+    marginLeft: 66,
   },
 });
+
