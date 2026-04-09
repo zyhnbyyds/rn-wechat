@@ -18,12 +18,25 @@ const MAPPING = {
   'paperplane.fill': 'send',
   'chevron.left.forwardslash.chevron.right': 'code',
   'chevron.right': 'chevron-right',
+  'chevron.left': 'chevron-left',
   'message.fill': 'chat',
   'person.2.fill': 'contacts',
   'safari.fill': 'explore',
   'camera.fill': 'photo-camera',
   'person.crop.circle.fill': 'account-circle',
-} as IconMapping;
+  'photo.on.rectangle.angled.fill': 'photo-library',
+  'play.rectangle.fill': 'play-circle-filled',
+  'qrcode.viewfinder': 'qr-code-scanner',
+  'iphone.shake': 'vibration',
+  'newspaper.fill': 'article',
+  'magnifyingglass': 'search',
+  'location.fill': 'near-me',
+  'square.grid.2x2.fill': 'apps',
+  'ellipsis.circle.fill': 'more-horiz',
+  'camera.viewfinder': 'center-focus-weak',
+  'face.smiling': 'sentiment-satisfied-alt',
+  'mic.fill': 'mic',
+} as unknown as IconMapping;
 
 /**
  * An icon component that uses native SF Symbols on iOS, and Material Icons on Android and web.
