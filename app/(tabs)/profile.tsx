@@ -1,5 +1,4 @@
 import { FlatList, StyleSheet, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -8,16 +7,15 @@ import { profileMenus } from '@/constants/mock';
 import { useThemeColor } from '@/hooks/use-theme-color';
 
 const MENU_ICONS: Record<string, { icon: string; color: string }> = {
-  '服务':    { icon: 'square.grid.2x2.fill', color: '#07c160' },
-  '收藏':    { icon: 'safari.fill',          color: '#fa8c16' },
-  '朋友圈':  { icon: 'photo.on.rectangle.angled.fill', color: '#1890ff' },
-  '卡包':    { icon: 'paperplane.fill',      color: '#722ed1' },
-  '表情':    { icon: 'face.smiling',         color: '#fa5151' },
-  '设置':    { icon: 'ellipsis.circle.fill', color: '#8a8a8a' },
+  '服务': { icon: 'square.grid.2x2.fill', color: '#07c160' },
+  '收藏': { icon: 'safari.fill', color: '#fa8c16' },
+  '朋友圈': { icon: 'photo.on.rectangle.angled.fill', color: '#1890ff' },
+  '卡包': { icon: 'paperplane.fill', color: '#722ed1' },
+  '表情': { icon: 'face.smiling', color: '#fa5151' },
+  '设置': { icon: 'ellipsis.circle.fill', color: '#8a8a8a' },
 };
 
 export default function ProfileScreen() {
-  const insets = useSafeAreaInsets();
   const separatorColor = useThemeColor({}, 'separator');
   const cardColor = useThemeColor({}, 'card');
   const secondaryText = useThemeColor({}, 'secondaryText');
@@ -25,7 +23,7 @@ export default function ProfileScreen() {
   return (
     <ThemedView style={styles.container}>
       {/* Profile header */}
-      <View style={[styles.profileCard, { backgroundColor: cardColor, paddingTop: insets.top + 16 }]}>
+      <View style={[styles.profileCard, { backgroundColor: cardColor, paddingTop: 16 }]}>
         <View style={[styles.avatar, { backgroundColor: '#07c160' }]}>
           <ThemedText style={styles.avatarInitial}>我</ThemedText>
         </View>

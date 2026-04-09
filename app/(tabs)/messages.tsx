@@ -1,6 +1,5 @@
 import { useRouter } from 'expo-router';
 import { FlatList, Pressable, StyleSheet, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -9,7 +8,6 @@ import { useThemeColor } from '@/hooks/use-theme-color';
 
 export default function MessagesScreen() {
   const router = useRouter();
-  const insets = useSafeAreaInsets();
   const separatorColor = useThemeColor({}, 'separator');
   const cardColor = useThemeColor({}, 'card');
   const secondaryText = useThemeColor({}, 'secondaryText');
@@ -18,9 +16,6 @@ export default function MessagesScreen() {
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title" style={[styles.title, { paddingTop: insets.top + 8 }]}>
-        聊天
-      </ThemedText>
       <FlatList
         data={chatSessions}
         keyExtractor={(item) => item.id}

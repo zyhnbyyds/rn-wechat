@@ -1,5 +1,4 @@
 import { SectionList, StyleSheet, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -12,16 +11,12 @@ const sections = Array.from(new Set(contacts.map((item) => item.tag))).map((tag)
 }));
 
 export default function ContactsScreen() {
-  const insets = useSafeAreaInsets();
   const separatorColor = useThemeColor({}, 'separator');
   const cardColor = useThemeColor({}, 'card');
   const secondaryText = useThemeColor({}, 'secondaryText');
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title" style={[styles.title, { paddingTop: insets.top + 8 }]}>
-        通讯录
-      </ThemedText>
       <SectionList
         sections={sections}
         keyExtractor={(item) => item.id}
